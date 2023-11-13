@@ -53,7 +53,7 @@ public class Card {
      */
     public Integer getValue() {
 
-        return 2;
+        return this.rank.ordinal();
     }
 
 }
