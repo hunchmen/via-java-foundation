@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
  */
 public class CalculatorTest {
 
-    private Calculator calc = null;
+    private Calculator calc;
 
     @BeforeEach
     void setup() {

@@ -19,6 +19,7 @@ public class Calculator {
      * 
      * @param num1
      * @param num2
+     * @return sum of num1 and num2
      */
     public int add(int num1, int num2) {
         return num1 + num2;
