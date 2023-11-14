@@ -7,6 +7,7 @@
 package com.via.calculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,4 +39,30 @@ public class CalculatorTest {
         assertEquals(1, actual);
     }
 
+    @Test
+    void canAddPositiveNumbers() {
+        int actual = calc.add(2, 3);
+        assertEquals(5, actual);
+    }
+
+    @Test
+    void canAddNegativeNumbers() {
+        int actual = calc.add(-2, -3);
+        assertEquals(-5, actual);
+    }
+
+    @Test
+    void canAddBoundaryIntegers() {
+        int actual = calc.add(Integer.MIN_VALUE, Integer.MAX_VALUE);
+        assertEquals(-1, actual);
+    }
+
+    @Test
+    void testAddNullValues() {
+        Integer num1 = 2;
+        Integer num2 = null;
+        assertThrows(NullPointerException.class, () -> {
+            calc.add(num1, num2);
+        });
+    }
 }
