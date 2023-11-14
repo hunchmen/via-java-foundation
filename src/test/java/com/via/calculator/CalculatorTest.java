@@ -65,4 +65,16 @@ public class CalculatorTest {
             calc.add(num1, num2);
         });
     }
+
+    @Test
+    void testAnnuityCalculation() {
+        String answer = calc.calculateAnnuity("22000", 7, ".06", 1);
+        assertEquals("$184,664.43", answer);
+    }
+
+    @Test
+    void testAnnuityCalculationPractice2() {
+        String answer = calc.calculateAnnuity("1200", 10, ".08", 4);
+        assertEquals("$72,482.38", answer);
+    }
 }
