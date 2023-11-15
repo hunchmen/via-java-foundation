@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
  * @date 14 Nov 2023
  *
  */
-public class CalculatorTest {
+class CalculatorTest {
 
     private Calculator calc;
 

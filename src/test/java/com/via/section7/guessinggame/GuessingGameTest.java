@@ -19,6 +19,8 @@ import org.junit.jupiter.api.Test;
  */
 class GuessingGameTest {
 
+    private static final int NUMBER_OF_TRIES = 100;
+
     private GuessingGame game;
 
     @BeforeEach
@@ -42,7 +44,6 @@ class GuessingGameTest {
 
     @Test
     void testOneWrongNegGuessSituation() {
-        int randomNum = game.getRandomNumber();
         String message = game.guess(-5);
         assertEquals("You lost!", message);
     }
@@ -53,7 +54,7 @@ class GuessingGameTest {
         // 1 2 3 4 5 6 7 8 9 10
         // 1 1 1 1 0 1 0 1 1 1 = 10
         int[] rndNumCount = new int[11];
-        for (int counter = 0; counter < 100; counter++) {
+        for (int counter = 0; counter < NUMBER_OF_TRIES; counter++) {
             GuessingGame game = new GuessingGame();
             int randomNum = game.getRandomNumber();
             rndNumCount[randomNum] = 1;
@@ -65,5 +66,24 @@ class GuessingGameTest {
         }
 
         assertEquals(10, sum);
+    }
+
+    @Test
+    void testFourWrongGuesses() {
+        game.guess(-3);
+        game.guess(-3);
+        game.guess(-3);
+        String message = game.guess(-3);
+        assertEquals("You didn't get it and you've had four tries. Game over!!!", message);
+    }
+
+    @Test
+    void testThreeWrongAndOneCorrectGuesses() {
+        game.guess(-3);
+        game.guess(-3);
+        game.guess(-3);
+        int correctGuess = game.getRandomNumber();
+        String message = game.guess(correctGuess);
+        assertEquals("You win!", message);
     }
 }

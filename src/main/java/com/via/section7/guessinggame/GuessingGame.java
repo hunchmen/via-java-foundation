@@ -18,7 +18,10 @@ import java.util.Random;
 public class GuessingGame {
 
     private Random random = new Random();
+
     private final int randomNumber = random.nextInt(10) + 1;
+
+    private int counter = 0;
 
     /**
      * 
@@ -26,6 +29,12 @@ public class GuessingGame {
      * @return
      */
     public String guess(int guessedNumber) {
+
+        counter++;
+        if (counter == 4 && guessedNumber != getRandomNumber()) {
+            return "You didn't get it and you've had four tries. Game over!!!";
+        }
+
         return guessedNumber == getRandomNumber() ? "You win!" : "You lost!";
     }
 
